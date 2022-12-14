@@ -61,11 +61,11 @@ namespace EmpMS
                     string Name = EmpNameTb.Text;
                     string Gender = GenCb.SelectedItem.ToString();
                     int Dep =Convert.ToInt32(DepCb.SelectedValue.ToString());
-                    string DOF = DOBTb.Value.ToString();
+                    string DOB = DOBTb.Value.ToString();
                     string JDate = JDateTb.Value.ToString();
                     int Salary = Convert.ToInt32(DailySalTb.Text);
                     string Query = "insert into EmployeeTbl values ('{0}','{1}','{2}','{3}','{4}','{5}')";
-                    Query = string.Format(Query,Name,Gender,Dep,DOF,JDate,Salary);
+                    Query = string.Format(Query,Name,Gender,Dep,DOB,JDate,Salary);
                     Con.SetData(Query);
                     ShowEmployees();
                     MessageBox.Show("Employee Added");
@@ -83,6 +83,9 @@ namespace EmpMS
 
         private void EditBtn_Click(object sender, EventArgs e)
         {
+
+
+
             try
             {
                 if (EmpNameTb.Text == "" || GenCb.SelectedIndex == -1 || DepCb.SelectedIndex == -1 || DailySalTb.Text == "")
@@ -94,11 +97,11 @@ namespace EmpMS
                     string Name = EmpNameTb.Text;
                     string Gender = GenCb.SelectedItem.ToString();
                     int Dep = Convert.ToInt32(DepCb.SelectedValue.ToString());
-                    string DOF = DOBTb.Value.ToString();
+                    string DOB = DOBTb.Value.ToString();
                     string JDate = JDateTb.Value.ToString();
                     int Salary = Convert.ToInt32(DailySalTb.Text);
-                    string Query = "Update EmployeeTbl set EmpName='{0}',EmpGen='{1}',EmpDep='{2}',EmpDOB='{3}',EmpJDate='{4}',EmpSal='{5}' where Empid={6}";
-                    Query = string.Format(Query, Name, Gender, Dep, DOF, JDate, Salary,Key);
+                    string Query = "Update EmployeeTbl set EmpName = '{0}',EmpGen = '{1}',EmpDep = '{2}',EmpDOF = '{3}',EmpJDate = '{4}',EmpSal = '{5}' where Empid = {6}";
+                    Query = string.Format(Query, Name,Gender,Dep,DOB,JDate,Salary, Key);
                     Con.SetData(Query);
                     ShowEmployees();
                     MessageBox.Show("Employee Updated");
@@ -112,6 +115,9 @@ namespace EmpMS
             {
                 MessageBox.Show(Ex.Message);
             }
+
+
+            
         }
 
         private void DeleteBtn_Click(object sender, EventArgs e)
@@ -143,7 +149,20 @@ namespace EmpMS
         int Key = 0;
         private void EmpList_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
+            EmpNameTb.Text = EmpList.SelectedRows[0].Cells[1].Value.ToString();
+            GenCb.Text = EmpList.SelectedRows[0].Cells[2].Value.ToString();
+            DepCb.SelectedValue = EmpList.SelectedRows[0].Cells[3].Value.ToString();
+            DOBTb.Text = EmpList.SelectedRows[0].Cells[4].Value.ToString();
+            JDateTb.Text = EmpList.SelectedRows[0].Cells[5].Value.ToString();
+            DailySalTb.Text = EmpList.SelectedRows[0].Cells[6].Value.ToString();
+            if (EmpNameTb.Text == "")
+            {
+                Key = 0;
+            }
+            else
+            {
+                Key = Convert.ToInt32(EmpList.SelectedRows[0].Cells[0].Value.ToString());
+            }
         }
     }
 }
