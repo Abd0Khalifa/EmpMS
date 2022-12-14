@@ -28,6 +28,20 @@ namespace EmpMS
             EmpCb.ValueMember = Con.GetData(Query).Columns["Empid"].ToString();
             EmpCb.DataSource = Con.GetData(Query);
         }
+        int DSal = 0;
+        string period = "";
+        private void GetSal()
+        {
+            string Query = "select * from EmployeeTbl where Empid = {0}";
+            Query = string.Format(Query, EmpCb.SelectedValue.ToString());
+            foreach(DataRow dr in Con.GetData(Query).Rows)
+            {
+                DSal = Convert.ToInt32(dr["EmpName"].ToString());
+            }
+            
+            // MessageBox.Show("" + DSal);
+            // EmpCb.DataSource = Con.GetData(Query);
+        }
 
         private void ShowSalary()
         {
@@ -50,6 +64,17 @@ namespace EmpMS
 
         private void SalList_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+
+        }
+
+        private void AddBtn_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void EmpCb_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            GetSal();
 
         }
     }
