@@ -30,16 +30,24 @@ namespace EmpMS
         {
 
         }
-
+        int Key = 0;
         private void guna2DataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
+            DepNameTb.Text = guna2DataGridView1.SelectedRows[0].Cells[1].Value.ToString();
+            if(DepNameTb.Text == "")
+            {
+                Key = 0;
+            }
+            else
+            {
+                Key = Convert.ToInt32(guna2DataGridView1.SelectedRows[0].Cells[0].Value.ToString());
+            }
         }
 
         private void ShowDepartments()
         {
             string Query = "Select * from DepartmentTbl";
-            DepList.DataSource = Con.GetData(Query);
+            guna2DataGridView1.DataSource = Con.GetData(Query);
         }
 
         private void AddBtn_Click(object sender, EventArgs e)
@@ -65,6 +73,36 @@ namespace EmpMS
             {
                 MessageBox.Show(Ex.Message);
             }
+        }
+
+        private void EditBtn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (DepNameTb.Text == "")
+                {
+                    MessageBox.Show("Missing Data!!!");
+                }
+                else
+                {
+                    string Dep = DepNameTb.Text;
+                    string Query = "Update DepartmentTbl set DepName = '{0}' where Depid = {1}";
+                    Query = string.Format(Query, DepNameTb.Text,Key);
+                    Con.SetData(Query);
+                    ShowDepartments();
+                    MessageBox.Show("Department Updated");
+                    DepNameTb.Text = "";
+                }
+            }
+            catch (Exception Ex)
+            {
+                MessageBox.Show(Ex.Message);
+            }
+        }
+
+        private void DeleteBtn_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }
