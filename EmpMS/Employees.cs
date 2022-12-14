@@ -23,8 +23,16 @@ namespace EmpMS
 
         private void ShowEmployees()
         {
-            string Query = "Select * from EmployeeTbl";
-            EmpList.DataSource = Con.GetData(Query);
+            try
+            {
+                string Query = "Select * from EmployeeTbl";
+                EmpList.DataSource = Con.GetData(Query);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            
         }
         private void GetDep()
         {

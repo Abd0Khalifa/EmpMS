@@ -131,5 +131,27 @@ namespace EmpMS
             obj.Show();
             this.Hide();
         }
+
+     
+        private void SalLbl_Click(object sender, EventArgs e)
+        {
+            Salary obj = new Salary();
+            obj.Show();
+            this.Hide();
+        }
+
+        private void DepLbl_Click(object sender, EventArgs e)
+        {
+            Departments obj = new Departments();
+            obj.Show();
+            this.Hide();
+        }
+
+        private void LogLbl_Click(object sender, EventArgs e)
+        {
+            Form1 obj = new Form1();
+            obj.Show();
+            this.Hide();
+        }
     }
 }
