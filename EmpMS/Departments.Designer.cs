@@ -45,7 +45,7 @@ namespace EmpMS
             this.panel1 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.label5 = new System.Windows.Forms.Label();
+            this.EmpLbl = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -233,16 +233,17 @@ namespace EmpMS
             this.pictureBox1.TabIndex = 47;
             this.pictureBox1.TabStop = false;
             // 
-            // label5
+            // EmpLbl
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.Teal;
-            this.label5.Location = new System.Drawing.Point(323, 84);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(96, 20);
-            this.label5.TabIndex = 48;
-            this.label5.Text = "Employees";
+            this.EmpLbl.AutoSize = true;
+            this.EmpLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.EmpLbl.ForeColor = System.Drawing.Color.Teal;
+            this.EmpLbl.Location = new System.Drawing.Point(323, 84);
+            this.EmpLbl.Name = "EmpLbl";
+            this.EmpLbl.Size = new System.Drawing.Size(96, 20);
+            this.EmpLbl.TabIndex = 48;
+            this.EmpLbl.Text = "Employees";
+            this.EmpLbl.Click += new System.EventHandler(this.EmpLbl_Click);
             // 
             // label6
             // 
@@ -334,7 +335,7 @@ namespace EmpMS
             this.Controls.Add(this.pictureBox5);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.pictureBox3);
-            this.Controls.Add(this.label5);
+            this.Controls.Add(this.EmpLbl);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.EditBtn);
@@ -380,7 +381,7 @@ namespace EmpMS
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label EmpLbl;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Label label7;
