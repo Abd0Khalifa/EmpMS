@@ -116,7 +116,29 @@ namespace EmpMS
 
         private void DeleteBtn_Click(object sender, EventArgs e)
         {
-           
+            try
+            {
+                if (Key == 0)
+                {
+                    MessageBox.Show("Missing Data!!!");
+                }
+                else
+                {
+                    string Query = "Delete from EmployeeTbl where Empid = {0}";
+                    Query = string.Format(Query, Key);
+                    Con.SetData(Query);
+                    ShowEmployees();
+                    MessageBox.Show("Employee Deleted");
+                    EmpNameTb.Text = "";
+                    GenCb.SelectedIndex = -1;
+                    DepCb.SelectedIndex = -1;
+                    DailySalTb.Text = "";
+                }
+            }
+            catch (Exception Ex)
+            {
+                MessageBox.Show(Ex.Message);
+            }
         }
         int Key = 0;
         private void EmpList_CellContentClick(object sender, DataGridViewCellEventArgs e)
