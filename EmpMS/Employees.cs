@@ -80,5 +80,48 @@ namespace EmpMS
                 MessageBox.Show(Ex.Message);
             }
         }
+
+        private void EditBtn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (EmpNameTb.Text == "" || GenCb.SelectedIndex == -1 || DepCb.SelectedIndex == -1 || DailySalTb.Text == "")
+                {
+                    MessageBox.Show("Missing Data!!!");
+                }
+                else
+                {
+                    string Name = EmpNameTb.Text;
+                    string Gender = GenCb.SelectedItem.ToString();
+                    int Dep = Convert.ToInt32(DepCb.SelectedValue.ToString());
+                    string DOF = DOBTb.Value.ToString();
+                    string JDate = JDateTb.Value.ToString();
+                    int Salary = Convert.ToInt32(DailySalTb.Text);
+                    string Query = "Update EmployeeTbl set EmpName='{0}',EmpGen='{1}',EmpDep='{2}',EmpDOB='{3}',EmpJDate='{4}',EmpSal='{5}' where Empid={6}";
+                    Query = string.Format(Query, Name, Gender, Dep, DOF, JDate, Salary,Key);
+                    Con.SetData(Query);
+                    ShowEmployees();
+                    MessageBox.Show("Employee Updated");
+                    EmpNameTb.Text = "";
+                    GenCb.SelectedIndex = -1;
+                    DepCb.SelectedIndex = -1;
+                    DailySalTb.Text = "";
+                }
+            }
+            catch (Exception Ex)
+            {
+                MessageBox.Show(Ex.Message);
+            }
+        }
+
+        private void DeleteBtn_Click(object sender, EventArgs e)
+        {
+           
+        }
+        int Key = 0;
+        private void EmpList_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
