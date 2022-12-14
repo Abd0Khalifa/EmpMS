@@ -50,7 +50,35 @@ namespace EmpMS
 
         private void AddBtn_Click(object sender, EventArgs e)
         {
-
+            try
+            {
+                if (EmpNameTb.Text == "" || GenCb.SelectedIndex==-1||DepCb.SelectedIndex==-1||DailySalTb.Text=="")
+                {
+                    MessageBox.Show("Missing Data!!!");
+                }
+                else
+                {
+                    string Name = EmpNameTb.Text;
+                    string Gender = GenCb.SelectedItem.ToString();
+                    int Dep =Convert.ToInt32(DepCb.SelectedValue.ToString());
+                    string DOF = DOBTb.Value.ToString();
+                    string JDate = JDateTb.Value.ToString();
+                    int Salary = Convert.ToInt32(DailySalTb.Text);
+                    string Query = "insert into EmployeeTbl values ('{0}','{1}','{2}','{3}','{4}','{5}')";
+                    Query = string.Format(Query,Name,Gender,Dep,DOF,JDate,Salary);
+                    Con.SetData(Query);
+                    ShowEmployees();
+                    MessageBox.Show("Employee Added");
+                    EmpNameTb.Text = "";
+                    GenCb.SelectedIndex = -1;
+                    DepCb.SelectedIndex = -1;
+                    DailySalTb.Text = "";
+                }
+            }
+            catch (Exception Ex)
+            {
+                MessageBox.Show(Ex.Message);
+            }
         }
     }
 }
