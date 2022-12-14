@@ -16,5 +16,10 @@ namespace EmpMS
         {
             InitializeComponent();
         }
+
+        private void guna2DateTimePicker3_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
