@@ -149,7 +149,7 @@ namespace EmpMS
 
         private void LogLbl_Click(object sender, EventArgs e)
         {
-            Form1 obj = new Form1();
+            Form1 obj = new form();
             obj.Show();
             this.Hide();
         }

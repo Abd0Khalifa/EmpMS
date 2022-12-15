@@ -122,5 +122,26 @@ namespace EmpMS
             obj.Show();
             this.Hide();
         }
+
+        private void label11_Click(object sender, EventArgs e)
+        {
+            Departments obj = new Departments();
+            obj.Show();
+            this.Hide();
+        }
+
+        private void label10_Click(object sender, EventArgs e)
+        {
+            Salary obj = new Salary();
+            obj.Show();
+            this.Hide();
+        }
+
+        private void label12_Click(object sender, EventArgs e)
+        {
+            Employees obj = new Employees();
+            obj.Show();
+            this.Hide();
+        }
     }
 }

@@ -172,5 +172,33 @@ namespace EmpMS
                 Key = Convert.ToInt32(EmpList.SelectedRows[0].Cells[0].Value.ToString());
             }
         }
+
+        private void label9_Click(object sender, EventArgs e)
+        {
+            Form1 obj = new Form1();
+            obj.Show();
+            this.Hide();
+        }
+
+        private void label11_Click(object sender, EventArgs e)
+        {
+            Departments obj = new Departments();
+            obj.Show();
+            this.Hide();
+        }
+
+        private void label10_Click(object sender, EventArgs e)
+        {
+            Salary obj = new Salary();
+            obj.Show();
+            this.Hide();
+        }
+
+        private void label12_Click(object sender, EventArgs e)
+        {
+            Employees obj = new Employees();
+            obj.Show();
+            this.Hide();
+        }
     }
 }
