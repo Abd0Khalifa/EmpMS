@@ -36,11 +36,24 @@ namespace EmpMS
             Query = string.Format(Query, EmpCb.SelectedValue.ToString());
             foreach(DataRow dr in Con.GetData(Query).Rows)
             {
-                DSal = Convert.ToInt32(dr["EmpName"].ToString());
+                DSal = Convert.ToInt32(dr["EmpSal"].ToString());
             }
             
             // MessageBox.Show("" + DSal);
             // EmpCb.DataSource = Con.GetData(Query);
+
+            if (DayTb.Text == "")
+            {
+                AmountTb.Text = "Rs  " + (d * DSal);
+            }else if(Convert.ToInt32(DayTb.Text) > 31)
+            {
+                MessageBox.Show("Days Can Not be Greater than 31");
+            }
+            else
+            {
+                d = Convert.ToInt32(DayTb.Text);
+                AmountTb.Text = "Rs  " + (d * DSal);
+            }
         }
 
         private void ShowSalary()
@@ -66,16 +79,48 @@ namespace EmpMS
         {
 
         }
-
+        int d = 1;
         private void AddBtn_Click(object sender, EventArgs e)
         {
-            
+            try
+            {
+                if (EmpCb.SelectedIndex == -1 || DayTb.Text == "" || PeriodTb.Text == "")
+                {
+                    MessageBox.Show("Missing Data!!!");
+                }
+                else
+                {
+                    period = PeriodTb.Value.Date.Month.ToString() + "-" + PeriodTb.Value.Date.Year.ToString();
+                    int Amount = DSal * Convert.ToInt32(DayTb.Text);
+                    int Days = Convert.ToInt32(DayTb.Text);
+                    string Query = "insert into SalaryTbl values ({0},{1},'{2}',{3},'{4}')";
+                    Query = string.Format(Query, EmpCb.SelectedValue.ToString(), Days, period, Amount, DateTime.Today.Date);
+                    Con.SetData(Query);
+                    ShowSalary();
+                    MessageBox.Show("Salary Paid");
+                    DayTb.Text = "";
+                    
+                }
+                
+            }
+            catch (Exception Ex)
+            {
+                MessageBox.Show(Ex.Message);
+            }
+
         }
 
         private void EmpCb_SelectedIndexChanged(object sender, EventArgs e)
         {
             GetSal();
 
+        }
+
+        private void label9_Click(object sender, EventArgs e)
+        {
+            Form1 obj = new Form1();
+            obj.Show();
+            this.Hide();
         }
     }
 }
