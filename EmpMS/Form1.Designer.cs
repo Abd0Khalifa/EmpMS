@@ -87,6 +87,7 @@ namespace EmpMS
             this.PassTb.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PassTb.Location = new System.Drawing.Point(348, 291);
             this.PassTb.Name = "PassTb";
+            this.PassTb.PasswordChar = '*';
             this.PassTb.Size = new System.Drawing.Size(250, 26);
             this.PassTb.TabIndex = 4;
             // 
@@ -123,6 +124,7 @@ namespace EmpMS
             this.LoginBtn.TabIndex = 7;
             this.LoginBtn.Text = "LOGIN";
             this.LoginBtn.UseVisualStyleBackColor = true;
+            this.LoginBtn.Click += new System.EventHandler(this.LoginBtn_Click);
             // 
             // ResetLbl
             // 
