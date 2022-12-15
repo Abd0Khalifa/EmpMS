@@ -175,7 +175,7 @@ namespace EmpMS
 
         private void label9_Click(object sender, EventArgs e)
         {
-            Form1 obj = new Form1();
+            Login obj = new Login();
             obj.Show();
             this.Hide();
         }

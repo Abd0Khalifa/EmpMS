@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace EmpMS
 {
-    public partial class Form1 : Form
+    public partial class Login : Form
     {
-        public Form1()
+        public Login()
         {
             InitializeComponent();
         }
@@ -45,6 +45,11 @@ namespace EmpMS
                 UNameTb.Text = "";
                 PassTb.Text = "";
             }
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
