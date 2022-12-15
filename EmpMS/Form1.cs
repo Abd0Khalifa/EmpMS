@@ -21,5 +21,11 @@ namespace EmpMS
         {
 
         }
+
+        private void ResetLbl_Click(object sender, EventArgs e)
+        {
+            UNameTb.Text = "";
+            PassTb.Text = "";
+        }
     }
 }
